@@ -14,8 +14,10 @@ use std::env;
 fn setup_handlebars() -> actix_web::web::Data<handlebars::Handlebars<'static>> {
     let mut handlebars = Handlebars::new();
 
+    let template_path = env::var("TEMPLATE_PATH").expect("TEMPLATE_PATH must be set");
+
     handlebars
-        .register_templates_directory(".html", "./static/templates")
+        .register_templates_directory(".html", template_path)
         .expect("Could not register template dir!");
 
     web::Data::new(handlebars)
