@@ -16,7 +16,7 @@ fn setup_handlebars() -> actix_web::web::Data<handlebars::Handlebars<'static>> {
 
     handlebars
         .register_templates_directory(".html", "./static/templates")
-        .unwrap();
+        .expect("Could not register template dir!");
 
     web::Data::new(handlebars)
 }
