@@ -1,5 +1,3 @@
-// generated using `diesel migration run`
-
 table! {
     config (c_id) {
         c_id -> Integer,
@@ -26,6 +24,7 @@ table! {
         token -> Text,
         verification_code -> Nullable<Text>,
         verified -> Bool,
+        is_admin -> Bool,
     }
 }
 
