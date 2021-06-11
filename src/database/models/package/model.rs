@@ -3,7 +3,7 @@ use crate::database::schema::package;
 
 #[derive(Queryable)]
 pub struct Package {
-    pub p_id: String,
+    pub p_id: i32,
     pub p_token: String,
     pub p_name: String,
     pub p_version: String,
