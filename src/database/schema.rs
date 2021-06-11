@@ -1,8 +1,7 @@
 table! {
-    config (c_id) {
-        c_id -> Integer,
-        c_name -> Text,
-        c_content -> Text,
+    config (c_key) {
+        c_key -> Text,
+        c_value -> Text,
     }
 }
 
