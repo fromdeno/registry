@@ -4,10 +4,11 @@ use std::error::Error;
 use diesel::*;
 
 
-pub fn create_package<'a>(conn: &SqliteConnection, name: &'a str) -> Result<usize, Box<dyn Error>> {
+pub fn create_package<'a>(conn: &SqliteConnection, name: &'a str, owner: &'a str) -> Result<usize, Box<dyn Error>> {
 	let new_user = NewModule {
-		name: name,
-		token: "TODO"
+		name,
+		token: "TODO",
+		owner
 	};
 
 	let result = diesel::insert_into(schema::module::table)

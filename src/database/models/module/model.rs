@@ -20,4 +20,5 @@ pub struct Module {
 pub struct NewModule<'a> {
     pub token: &'a str,
     pub name: &'a str,
+    pub owner: &'a str
 }
