@@ -21,5 +21,3 @@ pub fn create_user<'a>(conn: &SqliteConnection, username: &'a str, email: &'a st
 
 	Ok(result)
 }
-
-// TODO: token generation, credential verification, verification email stuff, so on...

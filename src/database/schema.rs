@@ -1,34 +1,49 @@
 table! {
-    config (c_key) {
-        c_key -> Text,
-        c_value -> Text,
+    config (key) {
+        key -> Text,
+        value -> Text,
     }
 }
 
 table! {
-    package (p_id) {
-        p_id -> Integer,
-        p_token -> Text,
-        p_name -> Text,
-        p_version -> Text,
+    module (id) {
+        id -> Text,
+        token -> Text,
+        name -> Text,
+        created_at -> Nullable<Timestamp>,
+        updated_at -> Nullable<Timestamp>,
+        owner -> Text,
+    }
+}
+
+table! {
+    module_version (id) {
+        id -> Nullable<Text>,
+        version -> Text,
+        created_at -> Nullable<Timestamp>,
     }
 }
 
 table! {
     user (id) {
-        id -> Integer,
+        id -> Text,
         username -> Text,
         email -> Text,
         password -> Text,
         token -> Text,
         verification_code -> Nullable<Text>,
-        verified -> Bool,
+        is_verified -> Bool,
         is_admin -> Bool,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
     }
 }
 
+joinable!(module -> user (owner));
+
 allow_tables_to_appear_in_same_query!(
     config,
-    package,
+    module,
+    module_version,
     user,
 );

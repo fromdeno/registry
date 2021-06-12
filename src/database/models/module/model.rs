@@ -1,11 +1,11 @@
 use crate::database::models::user::model::User;
-use crate::database::schema::package;
+use crate::database::schema::module;
 use chrono::NaiveDateTime;
 
 
 #[derive(Queryable, Associations)]
 #[belongs_to(User, foreign_key = "owner")]
-#[table_name = "package"]
+#[table_name = "module"]
 pub struct Package {
     pub id: i32,
     pub token: String,
@@ -16,7 +16,7 @@ pub struct Package {
 }
 
 #[derive(Insertable)]
-#[table_name="package"]
+#[table_name="module"]
 pub struct NewPackage<'a> {
     pub token: &'a str,
     pub name: &'a str,
