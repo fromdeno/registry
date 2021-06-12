@@ -34,8 +34,8 @@ fn establish_connection() -> SqliteConnection {
 async fn main() -> std::io::Result<()> {
     dotenv().ok();
 
-    let host = env::var("REGISTRY_HOST").expect("REGISTRY_HOST must be set");
-    let port = env::var("REGISTRY_PORT").expect("REGISTRY_PORT must be set");
+    let host = env::var("HOST").unwrap_or("127.0.0.1".to_string());
+    let port = env::var("PORT").unwrap_or("8080".to_string()).parse::<u16>().expect("PORT should be a valid number");
 
     let connection = establish_connection();
 
@@ -46,7 +46,7 @@ async fn main() -> std::io::Result<()> {
             .wrap(errors::handlers())
             .app_data(setup_handlebars())
             .service(routes::home::index)
-    }).bind(("127.0.0.1", 8080))?
+    }).bind((host, port))?
       .run()
       .await
 }
