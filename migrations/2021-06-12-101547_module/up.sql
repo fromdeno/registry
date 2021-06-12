@@ -6,5 +6,4 @@ CREATE TABLE module (
 	updated_at TIMESTAMP NOT NULL,
 	owner VARCHAR(36) NOT NULL,
 	FOREIGN KEY (owner) REFERENCES user(id)
-	/* TODO research about on delete cascade */
 );

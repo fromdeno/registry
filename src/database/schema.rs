@@ -21,6 +21,8 @@ table! {
         id -> Nullable<Text>,
         version -> Text,
         created_at -> Timestamp,
+        module -> Text,
+        publisher -> Text,
     }
 }
 
@@ -40,6 +42,8 @@ table! {
 }
 
 joinable!(module -> user (owner));
+joinable!(module_version -> module (module));
+joinable!(module_version -> user (publisher));
 
 allow_tables_to_appear_in_same_query!(
     config,
