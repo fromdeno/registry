@@ -1,18 +1,23 @@
+use crate::database::models::user::model::User;
 use crate::database::schema::package;
+use chrono::NaiveDateTime;
 
 
-#[derive(Queryable)]
+#[derive(Queryable, Associations)]
+#[belongs_to(User, foreign_key = "owner")]
+#[table_name = "package"]
 pub struct Package {
-    pub p_id: i32,
-    pub p_token: String,
-    pub p_name: String,
-    pub p_version: String,
+    pub id: i32,
+    pub token: String,
+    pub name: String,
+    pub created_at: NaiveDateTime,
+    pub updated_at: NaiveDateTime,
+    pub owner: String
 }
 
 #[derive(Insertable)]
 #[table_name="package"]
 pub struct NewPackage<'a> {
-    pub p_token: &'a str,
-    pub p_name: &'a str,
-    pub p_version: &'a str
+    pub token: &'a str,
+    pub name: &'a str,
 }
