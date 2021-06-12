@@ -3,7 +3,7 @@ use derive_more::{Display, Error};
 
 #[derive(Debug, Display, Error)]
 pub enum RegistryError {
-	#[display(fmt = "Page not found!")]
+	#[display(fmt = crate::constants::errors::NOT_FOUND)]
 	NotFound {},
 }
 

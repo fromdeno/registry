@@ -20,6 +20,7 @@ async fn index(
 
 		Ok(HttpResponse::Ok().body(body))
 	} else {
-		Err(registry_error::RegistryError::NotFound {})
+		Ok(HttpResponse::NotFound().finish())
+		// Err(registry_error::RegistryError::NotFound {})
 	}
 }
