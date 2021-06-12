@@ -3,14 +3,14 @@ use super::model::{Config, NewConfig};
 use diesel::*;
 
 
-pub fn set_config<'a>(conn: &SqliteConnection, c_key: &'a str, c_value: &'a str) -> Result<usize, diesel::result::Error> {
-	let existing = schema::config::table.find(c_key);
+pub fn set_config<'a>(conn: &SqliteConnection, key: &'a str, value: &'a str) -> Result<usize, diesel::result::Error> {
+	let existing = schema::config::table.find(key);
 
 	let existing_queried = existing.get_result::<Config>(conn);
 
 	let new_config = NewConfig {
-		c_key,
-		c_value
+		key,
+		value
 	};
 
 	match existing_queried {
@@ -36,5 +36,5 @@ pub fn set_config<'a>(conn: &SqliteConnection, c_key: &'a str, c_value: &'a str)
 pub fn get_config<'a>(conn: &SqliteConnection, name: &'a str) -> Result<String, diesel::result::Error> {
 	let value = schema::config::dsl::config.find(name).get_result::<Config>(conn)?;
 
-	Ok(value.c_value)
+	Ok(value.value)
 }
