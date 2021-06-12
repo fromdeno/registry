@@ -1,3 +1,3 @@
-pub mod user;
-pub mod module;
 pub mod config;
+pub mod module;
+pub mod user;

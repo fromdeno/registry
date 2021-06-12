@@ -2,23 +2,22 @@ use crate::database::models::user::model::User;
 use crate::database::schema::module;
 use chrono::NaiveDateTime;
 
-
 #[derive(Queryable, Associations)]
 #[belongs_to(User, foreign_key = "owner")]
 #[table_name = "module"]
 pub struct Module {
-    pub id: i32,
-    pub token: String,
-    pub name: String,
-    pub created_at: NaiveDateTime,
-    pub updated_at: NaiveDateTime,
-    pub owner: String
+	pub id: i32,
+	pub token: String,
+	pub name: String,
+	pub created_at: NaiveDateTime,
+	pub updated_at: NaiveDateTime,
+	pub owner: String,
 }
 
 #[derive(Insertable)]
-#[table_name="module"]
+#[table_name = "module"]
 pub struct NewModule<'a> {
-    pub token: &'a str,
-    pub name: &'a str,
-    pub owner: &'a str
+	pub token: &'a str,
+	pub name: &'a str,
+	pub owner: &'a str,
 }
