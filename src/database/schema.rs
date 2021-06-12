@@ -10,8 +10,8 @@ table! {
         id -> Text,
         token -> Text,
         name -> Text,
-        created_at -> Nullable<Timestamp>,
-        updated_at -> Nullable<Timestamp>,
+        created_at -> Timestamp,
+        updated_at -> Timestamp,
         owner -> Text,
     }
 }
@@ -20,7 +20,7 @@ table! {
     module_version (id) {
         id -> Nullable<Text>,
         version -> Text,
-        created_at -> Nullable<Timestamp>,
+        created_at -> Timestamp,
     }
 }
 
