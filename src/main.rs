@@ -1,3 +1,4 @@
+mod constants;
 mod database;
 mod errors;
 mod routes;
@@ -42,13 +43,12 @@ async fn main() -> std::io::Result<()> {
 		.parse::<u16>()
 		.expect("PORT should be a valid number");
 
-	let connection = establish_connection();
-
 	println!("Starting server on {}:{}", host, port);
 
 	HttpServer::new(move || {
 		App::new()
 			.wrap(errors::handlers())
+			.app_data(establish_connection())
 			.app_data(setup_handlebars())
 			.service(routes::home::index)
 	})

@@ -1,6 +1,8 @@
 mod forbidden;
 mod not_found;
 
+pub mod registry_error;
+
 use actix_http::{body::Body, Response};
 use actix_web::dev::ServiceResponse;
 use actix_web::http::StatusCode;

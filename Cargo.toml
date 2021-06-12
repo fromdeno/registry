@@ -12,3 +12,4 @@ handlebars = { version = "4.0.0", features = ["dir_source"] }
 serde_json = "1.0"
 dotenv = "0.15.0"
 chrono = "0.4"
+derive_more = "0.99.14"
