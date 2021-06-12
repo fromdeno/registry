@@ -1,4 +1,6 @@
 use crate::database::schema::user;
+use chrono::NaiveDateTime;
+
 
 #[derive(Queryable)]
 pub struct User {
@@ -9,7 +11,9 @@ pub struct User {
     pub token: String,
     pub verification_code: String,
     pub verified: bool,
-    pub is_admin: bool
+    pub is_admin: bool,
+    pub created_at: NaiveDateTime,
+    pub updated_at: NaiveDateTime
 }
 
 #[derive(Insertable)]
@@ -20,6 +24,6 @@ pub struct NewUser<'a> {
     pub password: &'a str,
     pub token: &'a str,
     pub verification_code: &'a str,
-    pub verified: &'a bool,
-    pub is_admin: &'a bool
+    pub is_verified: &'a bool,
+    pub is_admin: &'a bool,
 }

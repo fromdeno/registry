@@ -11,12 +11,12 @@ pub fn create_user<'a>(conn: &SqliteConnection, username: &'a str, email: &'a st
 		password,
 		token: "TODO",
 		verification_code: "TODO",
-		verified: &false,
+		is_verified: &false,
 		is_admin: &false
 	};
 
 	let result = diesel::insert_into(schema::user::table)
-		.values(&new_user)
+		.values((&new_user, schema::user::updated_at.eq(dsl::now)))
 		.execute(conn)?;
 
 	Ok(result)
